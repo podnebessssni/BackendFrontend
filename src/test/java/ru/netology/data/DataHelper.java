@@ -2,11 +2,11 @@ package ru.netology.data;
 
 import lombok.Value;
 
-import java.sql.SQLException;
 
 public class DataHelper {
     private DataHelper() {
     }
+
 
     @Value
     public static class AuthInfo {
@@ -24,7 +24,7 @@ public class DataHelper {
         private String code;
     }
 
-    public static VerificationInfo getInfoWithVerification() throws SQLException {
+    public static VerificationInfo getInfoWithVerification(){
         return new VerificationInfo("vasya", SqlData.getVerificationCode());
     }
 
@@ -39,14 +39,14 @@ public class DataHelper {
     public static class Transfer {
         private String from;
         private String to;
-        private int amount;
+        private int amount ;
     }
 
-    public static Transfer transferMoney(int amount) throws SQLException {
+    public static Transfer transferMoney(int amount){
         return new Transfer(SqlData.getFirstCardNumber(), SqlData.getSecondCardNumber(), amount);
     }
 
-    public static int cardBalanceAfterGetMoney(int balance, int amount) {
+    public static int cardBalanceAfterGetMoney(int balance, int amount ) {
         int total = balance + amount;
         return total;
     }
